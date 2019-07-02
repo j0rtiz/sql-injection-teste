@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.html",
   "scripts": {
-    "start": "node index.html"
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",
