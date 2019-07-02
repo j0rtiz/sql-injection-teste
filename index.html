@@ -64,11 +64,6 @@
     </section>
 
     <script>
-      const pgp = require("pg-promise")();
-      const db = pgp(
-        "postgres://viecjvygkuylqf:b4889d889f5452493f01f6173c376a36ad7e0c731197181c4a7d2aaff3a60859@ec2-23-21-109-177.compute-1.amazonaws.com:5432/d3afd7kopiv0r2"
-      );
-
       const express = require("express");
       const app = express();
       const port = process.env.PORT || 3000;
@@ -82,6 +77,10 @@
       });
 
       // function query() {
+      // const pgp = require("pg-promise")();
+      //   const db = pgp(
+      //     "postgres://viecjvygkuylqf:b4889d889f5452493f01f6173c376a36ad7e0c731197181c4a7d2aaff3a60859@ec2-23-21-109-177.compute-1.amazonaws.com:5432/d3afd7kopiv0r2"
+      //   );
       //   const login = document.getElementById("login").value;
       //   const senha = document.getElementById("senha").value;
       //   const sql = `SELECT * FROM usuarios WHERE login = ${login} AND senha = ${senha}`;
