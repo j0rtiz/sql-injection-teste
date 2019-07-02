@@ -10,6 +10,15 @@ const pg = new Pool({
 const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const port = process.env.PORT || 3000;
+const style = `background: #222; color: white; font-family: 'Trebuchet MS'; font-size: 30px; text-align: center; display: flex; align-items: center;`;
+const message = (msg, style) => {
+  return `<html>
+            <body style="${style}">
+              <div style="width: 100%;">${msg}</div>
+            </body>
+          </html>`;
+};
 const app = express();
 
 app.use(
@@ -45,7 +54,7 @@ app.post("/login", (req, res) => {
           req.session.login = login;
           res.redirect("/home");
         } else {
-          res.send("Dados inválidos!");
+          res.send(message("Dados inválidos!", style));
         }
         res.end();
       })
@@ -53,21 +62,23 @@ app.post("/login", (req, res) => {
         throw error;
       });
   } else {
-    res.send("Entre com Login e Senha!");
+    res.send(message("Entre com Login e Senha!", style));
     res.end();
   }
 });
 
 app.get("/home", (req, res) => {
   if (req.session.logged) {
-    res.send(`Bem vindo, ${req.session.login}!`);
+    res.send(message(`Bem vindo, ${req.session.login}!`, style));
   } else {
-    res.send("Você precisa efetuar login para visualizar esta página!");
+    res.send(
+      message("Você precisa efetuar login para visualizar esta página!", style)
+    );
   }
   res.end();
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.clear();
-  console.log("App listening on port 3000!");
+  console.log(`App listening on port ${port}!`);
 });
