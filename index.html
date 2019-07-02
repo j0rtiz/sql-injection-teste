@@ -81,19 +81,19 @@
         console.log(`App listening on port ${port}!`);
       });
 
-      function query() {
-        const login = document.getElementById("login").value;
-        const senha = document.getElementById("senha").value;
-        const sql = `SELECT * FROM usuarios WHERE login = ${login} AND senha = ${senha}`;
+      // function query() {
+      //   const login = document.getElementById("login").value;
+      //   const senha = document.getElementById("senha").value;
+      //   const sql = `SELECT * FROM usuarios WHERE login = ${login} AND senha = ${senha}`;
 
-        db.one(sql)
-          .then(data => {
-            console.log("DATA:", data.value);
-          })
-          .catch(error => {
-            console.log("ERROR:", error);
-          });
-      }
+      //   db.one(sql)
+      //     .then(data => {
+      //       console.log("DATA:", data.value);
+      //     })
+      //     .catch(error => {
+      //       console.log("ERROR:", error);
+      //     });
+      // }
     </script>
   </body>
 </html>
