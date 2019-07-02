@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Injection Teste</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      #cover {
+        background: #222;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+      }
+      #cover-caption {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="cover">
+      <div id="cover-caption">
+        <div id="container" class="container">
+          <div class="row text-white">
+            <div class="col-sm-4 offset-sm-4 text-center">
+              <h1 class="display-5 pb-4">SQL Injection Teste</h1>
+              <div class="info-form">
+                <form action="" class="form-inlin justify-content-center">
+                  <div class="form-group pb-2">
+                    <label class="sr-only">Login</label>
+                    <input
+                      type="text"
+                      id="login"
+                      class="form-control"
+                      placeholder="Digite o login"
+                    />
+                  </div>
+                  <div class="form-group pb-2">
+                    <label class="sr-only">Senha</label>
+                    <input
+                      type="text"
+                      id="senha"
+                      class="form-control"
+                      placeholder="Digite a senha"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Entrar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const pgp = require("pg-promise")();
+      const db = pgp(
+        "postgres://viecjvygkuylqf:b4889d889f5452493f01f6173c376a36ad7e0c731197181c4a7d2aaff3a60859@ec2-23-21-109-177.compute-1.amazonaws.com:5432/d3afd7kopiv0r2"
+      );
+
+      const express = require("express");
+      const app = express();
+      const port = process.env.PORT || 3000;
+
+      app.post("/", (req, res) => {
+        res.send("TESTE");
+      });
+
+      app.listen(port, () => {
+        console.log(`App listening on port ${port}!`);
+      });
+
+      function query() {
+        const login = document.getElementById("login").value;
+        const senha = document.getElementById("senha").value;
+        const sql = `SELECT * FROM usuarios WHERE login = ${login} AND senha = ${senha}`;
+
+        db.one(sql)
+          .then(data => {
+            console.log("DATA:", data.value);
+          })
+          .catch(error => {
+            console.log("ERROR:", error);
+          });
+      }
+    </script>
+  </body>
+</html>

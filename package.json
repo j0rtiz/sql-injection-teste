@@ -1,0 +1,18 @@
+{
+  "name": "sql-injection-teste",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jors88/sql-injection-teste.git"
+  },
+  "author": "jors88",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg-promise": "^8.7.2"
+  }
+}
