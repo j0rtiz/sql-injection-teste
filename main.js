@@ -31,7 +31,7 @@ const message = (msg, sql) => {
   const sqlStyle = `
     width: 100%;
     font-size: 20px;
-    color: greenyellow;`;
+    color: cyan;`;
   return `<html>
             <body style="${bodyStyle}">
               <p style="${msgStyle}">${msg}</p>
@@ -81,7 +81,7 @@ app.post("/login", (req, res) => {
         throw error;
       });
   } else {
-    res.send(message("Entre com Login e Senha!"));
+    res.send(message("Entre com Login e Senha!", ""));
     res.end();
   }
 });
@@ -91,7 +91,7 @@ app.get("/home", (req, res) => {
     res.send(message("Bem vindo!", sql(login, senha)));
   } else {
     res.send(
-      message("Você precisa efetuar login para visualizar esta página!")
+      message("Você precisa efetuar login para visualizar esta página!", "")
     );
   }
   res.end();
